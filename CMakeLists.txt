@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 add_executable(
     utf-utils
-    src/test.cpp
+    test.cpp
 )
 
 target_compile_definitions(

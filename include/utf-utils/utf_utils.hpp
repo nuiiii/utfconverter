@@ -1,0 +1,246 @@
+#if !defined(UTFUTILS_H)
+#   define UTFUTILS_H
+
+#include "utf-utils-docs.hpp"
+
+/**
+ * @file utf_utils.hpp
+ * @author bub1ick (Konstantin Smirnov)
+ * @author Relisted (Fedor Sheparnev)
+ * @brief The main header file for UTF-* string support.
+ * @version 0.1
+ * @date 2023-07-16
+ * 
+ * @copyright Copyright (c) 2023
+ */
+
+// Standard library
+#include <cstdint>
+#include <cstddef>
+#include <string>
+#include <vector>
+
+#if __cplusplus < 202002L // < c++20
+    /**
+     * @brief Typedef for char8_t type. Used if and only if C++ standard is less than C++20
+     */
+    using char8_t = unsigned char;
+#endif
+
+//----------------------------------------------------INTERFACE----------------------------------------------------//
+
+/**
+ * @namespace utf
+ * @brief This is the main namespace that contains everything related to utf-utils library.
+ */
+namespace utf {
+    /**
+     * @namespace utf::conversion
+     * @brief This namespace contains conversion functions.
+     */
+    namespace conversion {
+        /**
+         * @brief Defines return values for conversion functions.
+         * @remark Refer to conversion functions' respected documentation for info on #status_e::non_standard_encoding value.
+         */
+        enum class status_e : int8_t
+        {
+            non_standard_encoding = -1, /**< The encoding is not standard-compliant. */
+            undefined_error, /**< There was some error during conversion. */
+            success /**< Everything went smoothly. */
+        };
+
+        /**
+         * @addtogroup conv_funcs Conversion Functions
+         * Functions used to convert between Unicode encodings.
+         * @{
+         */
+
+        /**
+         * @brief This function converts UTF-16 string to UTF-8 string.
+         * 
+         * @param[in] utf16_sv const reference to a string view representing UTF-16 string.
+         * @param[out] utf8_s reference to a string which will hold converted string.
+         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
+         * @return status specified by #status_e enum.
+         * @remarks
+         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
+         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
+         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
+         * you also must be able to handle #status_e::non_standard_encoding return value separately.
+         */
+        status_e utf16_to_utf8(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard);
+
+        /**
+         * @brief This function converts UTF-32 string to UTF-8 string.
+         * 
+         * @param[in] utf32_sv const reference to a string view representing UTF-32 string.
+         * @param[out] utf8_s reference to a string which will hold converted string.
+         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
+         * @return status specified by #status_e enum.
+         * @remarks
+         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
+         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
+         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
+         * you also must be able to handle #status_e::non_standard_encoding return value separately.
+         */
+        status_e utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard);
+
+        status_e utf8_to_utf16(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
+        status_e utf32_to_utf16(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
+
+        status_e utf8_to_utf32(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard);
+
+        /**
+         * @brief This function converts UTF-16 string to UTF-32 string.
+         * 
+         * @param[in] utf16_sv const reference to a string view representing UTF-16 string.
+         * @param[out] utf32_s reference to a string which will hold converted string.
+         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
+         * @return status specified by #status_e enum.
+         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
+         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
+         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
+         * you also must be able to handle #status_e::non_standard_encoding return value separately.
+         */
+        status_e utf16_to_utf32(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard);
+        
+        /**
+         * @}
+         */
+
+    } // namespace conversion
+} // namespace utf
+
+//--------------------------------------------------IMPLEMENTATION--------------------------------------------------//
+#if defined IMPLEMENT_UTFUTILS
+
+namespace utf {
+    /**
+     * @brief This namespace contains various constants.
+     */
+    namespace constants {
+        /**
+         * @brief The 6 starting bits of "high" surrogate placed at the beggining of the two-byte boundary.
+         * This is the representation of this value in binary: @c 1101_1000_0000_0000.
+         * @remarks
+         * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
+         */
+        constexpr uint16_t high_surrogate_start       = 0xD800;
+        /**
+         * @brief The 6 starting bits of "high" surrogate placed at end beggining of a byte's boundary.
+         * This is the representation of this value in binary: @c 0011_0110.
+         * @remarks
+         * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
+         */
+        constexpr uint8_t  high_surrogate_marker      = 0xD800 >> 10;
+        /**
+         * @brief The 6 starting bits of "low" surrogate placed at the beggining of the two-byte boundary.
+         * This is the representation of this value in binary: @c 1101_1100_0000_0000.
+         * @remarks
+         * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
+         */
+        constexpr uint16_t low_surrogate_start        = 0xDC00;
+        constexpr uint8_t  low_surrogate_marker       = 0xDC00 >> 10; // low surrogate bits raw
+        constexpr uint32_t supplementary_plane_offset = 0x10000;      // Unicode "Supllementary Planes" offset
+    }
+    
+    // About "surrogates":
+    // https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF
+    // checks if UTF-16 character can be first in double character pair
+    constexpr bool is_high_surrogate(const char16_t ch) {
+        return constants::high_surrogate_marker == ch >> 10;
+    }
+    // checks if UTF-16 character can be second in double character pair
+    constexpr bool is_low_surrogate(const char16_t ch) {
+        return constants::low_surrogate_marker == ch >> 10;
+    }
+}
+
+utf::conversion::status_e utf::conversion::utf16_to_utf8(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
+    // Convert to UTF-32
+    std::basic_string<char32_t> code_points;
+    status_e status = utf16_to_utf32(utf16_sv, code_points, comply_with_standard);
+    if (status < status_e::success) {
+        return status;
+    }
+    // Convert to UTF-8
+    std::basic_string<char8_t> result_string;
+    status = utf32_to_utf8(code_points, result_string, comply_with_standard);
+    if (status < status_e::success) {
+        return status;
+    }
+    utf8_s = std::move(result_string);
+    return status_e::success;
+}
+
+utf::conversion::status_e utf::conversion::utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
+    return status_e::success;
+}
+
+utf::conversion::status_e utf::conversion::utf16_to_utf32(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard = false) {
+    // vector of UTF-32 characters (code points)
+    std::basic_string<char32_t> code_points;
+
+    bool was_double_character = false;
+    for (auto character_it = utf16_sv.begin(); character_it < utf16_sv.end(); character_it++) {
+        // skip this character, because we handled it last iteration
+        if (was_double_character) {
+            was_double_character = false;
+            continue;
+        }
+        // get this character
+        char16_t this_character = *character_it;
+
+        // check if this character is the last one
+        const bool exists_next_character = (character_it + 1) != utf16_sv.end();
+        char16_t next_character;
+
+        // get next character if there is one
+        if (exists_next_character) {
+            next_character = *(character_it + 1);
+        }
+
+        // if can be part of double character
+        if (is_high_surrogate(this_character)) {
+            // if there is no next character we add this as code point
+            if (!exists_next_character) {
+                if (!comply_with_standard) {
+                    code_points.push_back(this_character);
+                    continue;
+                }
+                return status_e::non_standard_encoding;
+            }
+
+            // if next character is not part of the double character we add this as code point
+            if (!is_low_surrogate(next_character)) {
+                if (!comply_with_standard) {
+                    code_points.push_back(this_character);
+                    continue;
+                }
+                return status_e::non_standard_encoding;
+            }
+
+            // it turned out we have a double character
+            was_double_character = true;
+
+            // do decoding "double UTF-16" -> UTF-32:
+            // https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF
+            char32_t high_code_point = (this_character - constants::high_surrogate_start) << 10;
+            char16_t low_code_point = next_character - constants::low_surrogate_start;
+            char32_t code_point = high_code_point + low_code_point + constants::supplementary_plane_offset;
+            code_points.push_back(code_point);
+
+            continue;
+        }
+
+        // if not a double character add this as next code point
+        code_points.push_back(this_character);
+    }
+    // return resulting string
+    utf32_s =  code_points;
+    return status_e::success;
+}
+
+#endif // defined IMPLEMENT_UTFUTILS
+#endif // !defined(UTFUTILS_H)
