@@ -56,7 +56,7 @@ namespace utf {
          */
 
         /**
-         * @brief This function converts UTF-6 string to UTF-16 string.
+         * @brief This function converts UTF-8 string to UTF-16 string.
          * 
          * @param[in] utf8_sv const reference to a string view representing UTF-8 string.
          * @param[out] utf16_s reference to a string which will hold converted string.
@@ -70,7 +70,7 @@ namespace utf {
          */
         status_e utf8_to_utf16(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
         /**
-         * @brief This function converts UTF-16 string to UTF-32 string.
+         * @brief This function converts UTF-8 string to UTF-32 string.
          * 
          * @param[in] utf8_sv const reference to a string view representing UTF-8 string.
          * @param[out] utf32_s reference to a string which will hold converted string.
