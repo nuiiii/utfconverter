@@ -106,6 +106,7 @@ namespace utf {
          * @param[out] utf32_s reference to a string which will hold converted string.
          * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
          * @return status specified by #status_e enum.
+         * @remarks
          * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
          * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
          * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
