@@ -116,10 +116,12 @@ namespace utf {
 
 namespace utf {
     /**
+     * @internal
      * @brief This namespace contains various constants.
      */
     namespace constants {
         /**
+         * @internal
          * @brief The 6 starting bits of "high" surrogate placed at the beggining of the two-byte boundary.
          * This is the representation of this value in binary: @c 1101_1000_0000_0000.
          * @remarks
@@ -127,6 +129,7 @@ namespace utf {
          */
         constexpr uint16_t high_surrogate_start       = 0xD800;
         /**
+         * @internal
          * @brief The 6 starting bits of "high" surrogate placed at end beggining of a byte's boundary.
          * This is the representation of this value in binary: @c 0011_0110.
          * @remarks
@@ -134,11 +137,14 @@ namespace utf {
          */
         constexpr uint8_t  high_surrogate_marker      = 0xD800 >> 10;
         /**
+         * @internal
          * @brief The 6 starting bits of "low" surrogate placed at the beggining of the two-byte boundary.
          * This is the representation of this value in binary: @c 1101_1100_0000_0000.
          * @remarks
          * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
          */
+
+        
         constexpr uint16_t low_surrogate_start        = 0xDC00;
         constexpr uint8_t  low_surrogate_marker       = 0xDC00 >> 10; // low surrogate bits raw
         constexpr uint32_t supplementary_plane_offset = 0x10000;      // Unicode "Supllementary Planes" offset
