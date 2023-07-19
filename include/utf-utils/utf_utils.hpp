@@ -43,8 +43,7 @@ namespace utf {
          * @brief Defines return values for conversion functions.
          * @remark Refer to conversion functions' respected documentation for info on #status_e::non_standard_encoding value.
          */
-        enum class status_e : int8_t
-        {
+        enum class status_e : int8_t {
             non_standard_encoding = -1, /**< The encoding is not standard-compliant. */
             undefined_error, /**< There was some error during conversion. */
             success /**< Everything went smoothly. */
@@ -264,23 +263,43 @@ namespace utf {
         /**
          * @}
          */
-    }
-    
-    // About "surrogates":
-    // https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF
-    // checks if UTF-16 character can be first in double character pair
+    } // namespace constants
+
+    /**
+     * @internal
+     * @brief Checks if UTF-16 character can be first in double character pair
+     * @param ch Character to check
+     * @return true if character is the first in surrogate pair
+     * @return false if character is not the first in surrogate pair
+     * @details
+     * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">About surrogates</a>.
+     */
     constexpr bool is_high_surrogate(const char16_t ch) {
         return constants::high_surrogate_marker == ch >> 10;
     }
-    // checks if UTF-16 character can be second in double character pair
+    /**
+     * @internal
+     * @brief Checks if UTF-16 character can be second in double character pair
+     * @param ch Character to check
+     * @return true if character is the second in surrogate pair
+     * @return false if character is not the first in surrogate pair
+     * @details
+     * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">About surrogates</a>.
+     */
     constexpr bool is_low_surrogate(const char16_t ch) {
         return constants::low_surrogate_marker == ch >> 10;
     }
+
 }
 
 using namespace utf;
 using namespace utf::conversion;
 using namespace utf::constants;
+
+status_e utf::conversion::utf8_to_utf32(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard = false) {
+    std::basic_string<char32_t> code_points;
+    return status_e::success;
+}
 
 status_e utf::conversion::utf16_to_utf8(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
     // Convert to UTF-32
@@ -366,9 +385,8 @@ status_e utf::conversion::utf16_to_utf32(const std::basic_string_view<char16_t>&
 
 status_e utf::conversion::utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
     std::basic_string<char8_t> result;
-    
-    for (auto it = utf32_sv.begin(); it < utf32_sv.end(); it++) {
-        char32_t this_code_point = *it;
+
+    for (const char32_t this_code_point : utf32_sv) {
         if (this_code_point > four_byte_boundary) {
             return status_e::undefined_error;
         }
