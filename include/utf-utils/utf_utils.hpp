@@ -175,7 +175,7 @@ namespace utf {
         constexpr uint16_t high_surrogate_start       = 0xD800;
         /**
          * @internal
-         * @brief The 6 starting bits of "high" surrogate placed at end beggining of a byte's boundary.
+         * @brief The 6 starting bits of "high" surrogate placed at the end of a byte's boundary.
          * This is the representation of this value in binary: @c 0011_0110.
          * @details
          * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
@@ -191,7 +191,7 @@ namespace utf {
         constexpr uint16_t low_surrogate_start        = 0xDC00;
         /**
          * @internal
-         * @brief The 6 starting bits of "low" surrogate placed at the beggining of byte's boundary.
+         * @brief The 6 starting bits of "low" surrogate placed at the end of byte's boundary.
          * This is the representation of this value in binary: @c 0011_0111.
          * @details
          * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
