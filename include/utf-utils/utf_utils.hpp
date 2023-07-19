@@ -56,7 +56,33 @@ namespace utf {
          * @{
          */
 
+        /**
+         * @brief This function converts UTF-6 string to UTF-16 string.
+         * 
+         * @param[in] utf8_sv const reference to a string view representing UTF-8 string.
+         * @param[out] utf16_s reference to a string which will hold converted string.
+         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
+         * @return status specified by #status_e enum.
+         * @remarks
+         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
+         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
+         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
+         * you also must be able to handle #status_e::non_standard_encoding return value separately.
+         */
         status_e utf8_to_utf16(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
+        /**
+         * @brief This function converts UTF-6 string to UTF-32 string.
+         * 
+         * @param[in] utf8_sv const reference to a string view representing UTF-8 string.
+         * @param[out] utf32_s reference to a string which will hold converted string.
+         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
+         * @return status specified by #status_e enum.
+         * @remarks
+         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
+         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
+         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
+         * you also must be able to handle #status_e::non_standard_encoding return value separately.
+         */
         status_e utf8_to_utf32(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard);
 
         /**
@@ -102,6 +128,19 @@ namespace utf {
          * you also must be able to handle #status_e::non_standard_encoding return value separately.
          */
         status_e utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard);
+        /**
+         * @brief This function converts UTF-32 string to UTF-8 string.
+         * 
+         * @param[in] utf32_sv const reference to a string view representing UTF-32 string.
+         * @param[out] utf16_s reference to a string which will hold converted string.
+         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
+         * @return status specified by #status_e enum.
+         * @remarks
+         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
+         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
+         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
+         * you also must be able to handle #status_e::non_standard_encoding return value separately.
+         */
         status_e utf32_to_utf16(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
 
         /**
@@ -122,9 +161,15 @@ namespace utf {
     namespace constants {
         /**
          * @internal
+         * @addtogroup constants Constants
+         * Constants that are needed for conversion.
+         * @{
+         */
+        /**
+         * @internal
          * @brief The 6 starting bits of "high" surrogate placed at the beggining of the two-byte boundary.
          * This is the representation of this value in binary: @c 1101_1000_0000_0000.
-         * @remarks
+         * @details
          * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
          */
         constexpr uint16_t high_surrogate_start       = 0xD800;
@@ -132,7 +177,7 @@ namespace utf {
          * @internal
          * @brief The 6 starting bits of "high" surrogate placed at end beggining of a byte's boundary.
          * This is the representation of this value in binary: @c 0011_0110.
-         * @remarks
+         * @details
          * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
          */
         constexpr uint8_t  high_surrogate_marker      = 0xD800 >> 10;
@@ -140,24 +185,85 @@ namespace utf {
          * @internal
          * @brief The 6 starting bits of "low" surrogate placed at the beggining of the two-byte boundary.
          * This is the representation of this value in binary: @c 1101_1100_0000_0000.
-         * @remarks
+         * @details
          * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
          */
-
-        
         constexpr uint16_t low_surrogate_start        = 0xDC00;
-        constexpr uint8_t  low_surrogate_marker       = 0xDC00 >> 10; // low surrogate bits raw
-        constexpr uint32_t supplementary_plane_offset = 0x10000;      // Unicode "Supllementary Planes" offset
-
+        /**
+         * @internal
+         * @brief The 6 starting bits of "low" surrogate placed at the beggining of byte's boundary.
+         * This is the representation of this value in binary: @c 0011_0111.
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">Wikipedia article</a> about this value.
+         */
+        constexpr uint8_t  low_surrogate_marker       = 0xDC00 >> 10;
+        /**
+         * @internal
+         * @brief Unicode "Supllementary Planes" (1 through 16) offset.
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/Plane_(Unicode)">Plane (Unicode) Wikipidia article</a>.
+         */
+        constexpr uint32_t supplementary_plane_offset = 0x10000;
+        /**
+         * @internal
+         * @brief Code points up to and including this value can be fitted into 1 byte (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
         constexpr uint8_t  one_byte_boundary          = 0x007F;
+        /**
+         * @internal
+         * @brief Code points up to and including this value can be fitted into 2 bytes (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
         constexpr uint16_t two_byte_boundary          = 0x07FF;
+        /**
+         * @internal
+         * @brief Code points up to and including this value can be fitted into 3 bytes (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
         constexpr uint16_t three_byte_boundary        = 0xFFFF;
+        /**
+         * @internal
+         * @brief Code points up to and including this value can be fitted into 4 bytes (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
         constexpr uint32_t four_byte_boundary         = 0x10FFFF;
+        /**
+         * @internal
+         * @brief These 2 bits are the first in each consecutive byte after the leading one (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
+        constexpr uint8_t trailing_byte_marker        = 0b10;
+        /**
+         * @internal
+         * @brief These 3 bits are the first in first byte in double byte character (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
+        constexpr uint8_t double_byte_marker          = 0b110;
+        /**
+         * @internal
+         * @brief These 4 bits are the first in first byte in double byte character (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
+        constexpr uint8_t triple_byte_marker          = 0b1110;
+        /**
+         * @internal
+         * @brief These 5 bits are the first in first byte in double byte character (UTF-8)
+         * @details
+         * See <a href="https://en.wikipedia.org/wiki/UTF-8#Encoding">Wikipedia UTF-8#Encoding</a>.
+         */
+        constexpr uint8_t quadruple_byte_marker       = 0b11110;
 
-        constexpr uint8_t trailing_byte_marker        = 0x2;
-        constexpr uint8_t double_byte_marker          = 0x6;
-        constexpr uint8_t triple_byte_marker          = 0xE;
-        constexpr uint8_t quadruple_byte_marker       = 0x1E;
+        /**
+         * @}
+         */
     }
     
     // About "surrogates":
