@@ -157,7 +157,11 @@ namespace utf {
     }
 }
 
-utf::conversion::status_e utf::conversion::utf16_to_utf8(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
+using namespace utf;
+using namespace utf::conversion;
+using namespace utf::constants;
+
+status_e utf::conversion::utf16_to_utf8(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
     // Convert to UTF-32
     std::basic_string<char32_t> code_points;
     status_e status = utf16_to_utf32(utf16_sv, code_points, comply_with_standard);
@@ -170,15 +174,15 @@ utf::conversion::status_e utf::conversion::utf16_to_utf8(const std::basic_string
     if (status < status_e::success) {
         return status;
     }
-    utf8_s = std::move(result_string);
+    utf8_s = result_string;
     return status_e::success;
 }
 
-utf::conversion::status_e utf::conversion::utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
+status_e utf::conversion::utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
     return status_e::success;
 }
 
-utf::conversion::status_e utf::conversion::utf16_to_utf32(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard = false) {
+status_e utf::conversion::utf16_to_utf32(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard = false) {
     // vector of UTF-32 characters (code points)
     std::basic_string<char32_t> code_points;
 
@@ -226,9 +230,9 @@ utf::conversion::status_e utf::conversion::utf16_to_utf32(const std::basic_strin
 
             // do decoding "double UTF-16" -> UTF-32:
             // https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF
-            char32_t high_code_point = (this_character - constants::high_surrogate_start) << 10;
-            char16_t low_code_point = next_character - constants::low_surrogate_start;
-            char32_t code_point = high_code_point + low_code_point + constants::supplementary_plane_offset;
+            char32_t high_code_point = (this_character - high_surrogate_start) << 10;
+            char16_t low_code_point = next_character - low_surrogate_start;
+            char32_t code_point = high_code_point + low_code_point + supplementary_plane_offset;
             code_points.push_back(code_point);
 
             continue;
