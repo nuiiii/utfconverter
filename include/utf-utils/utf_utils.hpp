@@ -56,6 +56,9 @@ namespace utf {
          * @{
          */
 
+        status_e utf8_to_utf16(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
+        status_e utf8_to_utf32(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard);
+
         /**
          * @brief This function converts UTF-16 string to UTF-8 string.
          * 
@@ -72,6 +75,20 @@ namespace utf {
         status_e utf16_to_utf8(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard);
 
         /**
+         * @brief This function converts UTF-16 string to UTF-32 string.
+         * 
+         * @param[in] utf16_sv const reference to a string view representing UTF-16 string.
+         * @param[out] utf32_s reference to a string which will hold converted string.
+         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
+         * @return status specified by #status_e enum.
+         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
+         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
+         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
+         * you also must be able to handle #status_e::non_standard_encoding return value separately.
+         */
+        status_e utf16_to_utf32(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard);
+
+        /**
          * @brief This function converts UTF-32 string to UTF-8 string.
          * 
          * @param[in] utf32_sv const reference to a string view representing UTF-32 string.
@@ -85,26 +102,8 @@ namespace utf {
          * you also must be able to handle #status_e::non_standard_encoding return value separately.
          */
         status_e utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard);
-
-        status_e utf8_to_utf16(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
         status_e utf32_to_utf16(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char16_t>& utf16_s, bool comply_with_standard);
 
-        status_e utf8_to_utf32(const std::basic_string_view<char8_t>& utf8_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard);
-
-        /**
-         * @brief This function converts UTF-16 string to UTF-32 string.
-         * 
-         * @param[in] utf16_sv const reference to a string view representing UTF-16 string.
-         * @param[out] utf32_s reference to a string which will hold converted string.
-         * @param[in] comply_with_standard should the conversion function comply with Unicode standard. Defaults to @c false.  Refer to "Remarks" for details.
-         * @return status specified by #status_e enum.
-         * Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow
-         * usage of characters with code point from @c U+D800 to @c U+DFFF. Still, as noted by the aforementioned Wikipedia article you @a can
-         * convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it
-         * you also must be able to handle #status_e::non_standard_encoding return value separately.
-         */
-        status_e utf16_to_utf32(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard);
-        
         /**
          * @}
          */

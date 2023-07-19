@@ -93,7 +93,8 @@ $(document).ready(function(){initNavTree('utf__utils_8hpp.html',''); initResizab
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">utf_utils.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -116,6 +117,9 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceutf_1_1conversion"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf_1_1conversion.html">utf::conversion</a></td></tr>
 <tr class="memdesc:namespaceutf_1_1conversion"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace contains conversion functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceutf_1_1constants"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf_1_1constants.html">utf::constants</a></td></tr>
+<tr class="memdesc:namespaceutf_1_1constants"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace contains various constants. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -135,24 +139,72 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#gae1995dff9d8380a3b0399aacbd2a6a88">utf::conversion::utf16_to_utf8</a> (const std::basic_string_view&lt; char16_t &gt; &amp;utf16_sv, std::basic_string&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_s, bool comply_with_standard)</td></tr>
-<tr class="memdesc:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-16 string to UTF-8 string.  <br /></td></tr>
-<tr class="separator:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1d74df81c0aab9aa28711facebf9855"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#gaa1d74df81c0aab9aa28711facebf9855">utf::conversion::utf32_to_utf8</a> (const std::basic_string_view&lt; char32_t &gt; &amp;utf32_sv, std::basic_string&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_s, bool comply_with_standard)</td></tr>
-<tr class="memdesc:gaa1d74df81c0aab9aa28711facebf9855"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-32 string to UTF-8 string.  <br /></td></tr>
-<tr class="separator:gaa1d74df81c0aab9aa28711facebf9855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafacbcecd7479c214800aad38ac30954a"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>utf::conversion::utf8_to_utf16</b> (const std::basic_string_view&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_sv, std::basic_string&lt; char16_t &gt; &amp;utf16_s, bool comply_with_standard)</td></tr>
 <tr class="separator:gafacbcecd7479c214800aad38ac30954a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6aa9eb9a540686828f5fa2dfcda6ee3"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>utf::conversion::utf32_to_utf16</b> (const std::basic_string_view&lt; char32_t &gt; &amp;utf32_sv, std::basic_string&lt; char16_t &gt; &amp;utf16_s, bool comply_with_standard)</td></tr>
-<tr class="separator:gad6aa9eb9a540686828f5fa2dfcda6ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab805d4cefd7609c6f941398e7d257c98"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>utf::conversion::utf8_to_utf32</b> (const std::basic_string_view&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_sv, std::basic_string&lt; char32_t &gt; &amp;utf32_s, bool comply_with_standard)</td></tr>
 <tr class="separator:gab805d4cefd7609c6f941398e7d257c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#gae1995dff9d8380a3b0399aacbd2a6a88">utf::conversion::utf16_to_utf8</a> (const std::basic_string_view&lt; char16_t &gt; &amp;utf16_sv, std::basic_string&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_s, bool comply_with_standard)</td></tr>
+<tr class="memdesc:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-16 string to UTF-8 string.  <br /></td></tr>
+<tr class="separator:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3741664d4e94c499fc91ce34a031718a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#ga3741664d4e94c499fc91ce34a031718a">utf::conversion::utf16_to_utf32</a> (const std::basic_string_view&lt; char16_t &gt; &amp;utf16_sv, std::basic_string&lt; char32_t &gt; &amp;utf32_s, bool comply_with_standard)</td></tr>
 <tr class="memdesc:ga3741664d4e94c499fc91ce34a031718a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-16 string to UTF-32 string.  <br /></td></tr>
 <tr class="separator:ga3741664d4e94c499fc91ce34a031718a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1d74df81c0aab9aa28711facebf9855"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#gaa1d74df81c0aab9aa28711facebf9855">utf::conversion::utf32_to_utf8</a> (const std::basic_string_view&lt; char32_t &gt; &amp;utf32_sv, std::basic_string&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_s, bool comply_with_standard)</td></tr>
+<tr class="memdesc:gaa1d74df81c0aab9aa28711facebf9855"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-32 string to UTF-8 string.  <br /></td></tr>
+<tr class="separator:gaa1d74df81c0aab9aa28711facebf9855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6aa9eb9a540686828f5fa2dfcda6ee3"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><b>utf::conversion::utf32_to_utf16</b> (const std::basic_string_view&lt; char32_t &gt; &amp;utf32_sv, std::basic_string&lt; char16_t &gt; &amp;utf16_s, bool comply_with_standard)</td></tr>
+<tr class="separator:gad6aa9eb9a540686828f5fa2dfcda6ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5a5c688314aef2a1805af198e80a96e"><td class="memItemLeft" align="right" valign="top"><a id="ae5a5c688314aef2a1805af198e80a96e" name="ae5a5c688314aef2a1805af198e80a96e"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>utf::is_high_surrogate</b> (const char16_t ch)</td></tr>
+<tr class="separator:ae5a5c688314aef2a1805af198e80a96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39b5d4d739c2180b84e96ed614042f44"><td class="memItemLeft" align="right" valign="top"><a id="a39b5d4d739c2180b84e96ed614042f44" name="a39b5d4d739c2180b84e96ed614042f44"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>utf::is_low_surrogate</b> (const char16_t ch)</td></tr>
+<tr class="separator:a39b5d4d739c2180b84e96ed614042f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a632a3d10c952d283a5fa3313dcf08297"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf_1_1constants.html#a632a3d10c952d283a5fa3313dcf08297">utf::constants::high_surrogate_start</a> = 0xD800</td></tr>
+<tr class="memdesc:a632a3d10c952d283a5fa3313dcf08297"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 6 starting bits of "high" surrogate placed at the beggining of the two-byte boundary. This is the representation of this value in binary: <code>1101_1000_0000_0000</code>.  <br /></td></tr>
+<tr class="separator:a632a3d10c952d283a5fa3313dcf08297"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae05428a306ebabeafb6788953bb5e77f"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf_1_1constants.html#ae05428a306ebabeafb6788953bb5e77f">utf::constants::high_surrogate_marker</a> = 0xD800 &gt;&gt; 10</td></tr>
+<tr class="memdesc:ae05428a306ebabeafb6788953bb5e77f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 6 starting bits of "high" surrogate placed at end beggining of a byte's boundary. This is the representation of this value in binary: <code>0011_0110</code>.  <br /></td></tr>
+<tr class="separator:ae05428a306ebabeafb6788953bb5e77f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cbf71dab4b90973703c857e52f13e89"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf_1_1constants.html#a0cbf71dab4b90973703c857e52f13e89">utf::constants::low_surrogate_start</a> = 0xDC00</td></tr>
+<tr class="memdesc:a0cbf71dab4b90973703c857e52f13e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 6 starting bits of "low" surrogate placed at the beggining of the two-byte boundary. This is the representation of this value in binary: <code>1101_1100_0000_0000</code>.  <br /></td></tr>
+<tr class="separator:a0cbf71dab4b90973703c857e52f13e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82da38a455b2e2502e9a392968b82cb"><td class="memItemLeft" align="right" valign="top"><a id="ad82da38a455b2e2502e9a392968b82cb" name="ad82da38a455b2e2502e9a392968b82cb"></a>
+constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::low_surrogate_marker</b> = 0xDC00 &gt;&gt; 10</td></tr>
+<tr class="separator:ad82da38a455b2e2502e9a392968b82cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c619b805dbcb7118bcf5a8a4ee0f7f"><td class="memItemLeft" align="right" valign="top"><a id="af8c619b805dbcb7118bcf5a8a4ee0f7f" name="af8c619b805dbcb7118bcf5a8a4ee0f7f"></a>
+constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::supplementary_plane_offset</b> = 0x10000</td></tr>
+<tr class="separator:af8c619b805dbcb7118bcf5a8a4ee0f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed1754e0018de6c95a40501dce61eb1"><td class="memItemLeft" align="right" valign="top"><a id="a9ed1754e0018de6c95a40501dce61eb1" name="a9ed1754e0018de6c95a40501dce61eb1"></a>
+constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::one_byte_boundary</b> = 0x007F</td></tr>
+<tr class="separator:a9ed1754e0018de6c95a40501dce61eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b2b1a9faa253e9e86dd8729a7c69885"><td class="memItemLeft" align="right" valign="top"><a id="a7b2b1a9faa253e9e86dd8729a7c69885" name="a7b2b1a9faa253e9e86dd8729a7c69885"></a>
+constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::two_byte_boundary</b> = 0x07FF</td></tr>
+<tr class="separator:a7b2b1a9faa253e9e86dd8729a7c69885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a062c62313965ba55b4b6c54434c6e9a3"><td class="memItemLeft" align="right" valign="top"><a id="a062c62313965ba55b4b6c54434c6e9a3" name="a062c62313965ba55b4b6c54434c6e9a3"></a>
+constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::three_byte_boundary</b> = 0xFFFF</td></tr>
+<tr class="separator:a062c62313965ba55b4b6c54434c6e9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2af40e256307a13964f07e3ed1667840"><td class="memItemLeft" align="right" valign="top"><a id="a2af40e256307a13964f07e3ed1667840" name="a2af40e256307a13964f07e3ed1667840"></a>
+constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::four_byte_boundary</b> = 0x10FFFF</td></tr>
+<tr class="separator:a2af40e256307a13964f07e3ed1667840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f640739081f29bace374d5865622cf2"><td class="memItemLeft" align="right" valign="top"><a id="a5f640739081f29bace374d5865622cf2" name="a5f640739081f29bace374d5865622cf2"></a>
+constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::trailing_byte_marker</b> = 0x2</td></tr>
+<tr class="separator:a5f640739081f29bace374d5865622cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44c303e9fa4974442a5cd8a09680edc"><td class="memItemLeft" align="right" valign="top"><a id="ab44c303e9fa4974442a5cd8a09680edc" name="ab44c303e9fa4974442a5cd8a09680edc"></a>
+constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::double_byte_marker</b> = 0x6</td></tr>
+<tr class="separator:ab44c303e9fa4974442a5cd8a09680edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59082d3863ac32ad35bd73662b554435"><td class="memItemLeft" align="right" valign="top"><a id="a59082d3863ac32ad35bd73662b554435" name="a59082d3863ac32ad35bd73662b554435"></a>
+constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::triple_byte_marker</b> = 0xE</td></tr>
+<tr class="separator:a59082d3863ac32ad35bd73662b554435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae065b32a04d53f85032deef4cccba643"><td class="memItemLeft" align="right" valign="top"><a id="ae065b32a04d53f85032deef4cccba643" name="ae065b32a04d53f85032deef4cccba643"></a>
+constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>utf::constants::quadruple_byte_marker</b> = 0x1E</td></tr>
+<tr class="separator:ae065b32a04d53f85032deef4cccba643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The main header file for UTF-* string support. </p>

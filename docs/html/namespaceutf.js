@@ -1,5 +1,10 @@
 var namespaceutf =
 [
+    [ "constants", "namespaceutf_1_1constants.html", [
+      [ "high_surrogate_marker", "namespaceutf_1_1constants.html#ae05428a306ebabeafb6788953bb5e77f", null ],
+      [ "high_surrogate_start", "namespaceutf_1_1constants.html#a632a3d10c952d283a5fa3313dcf08297", null ],
+      [ "low_surrogate_start", "namespaceutf_1_1constants.html#a0cbf71dab4b90973703c857e52f13e89", null ]
+    ] ],
     [ "conversion", "namespaceutf_1_1conversion.html", [
       [ "status_e", "namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0", [
         [ "non_standard_encoding", "namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0a82ded7b365261abc71391e997ec3c0cb", null ],

@@ -8,5 +8,8 @@ var utf__utils_8hpp =
     ] ],
     [ "utf16_to_utf32", "utf__utils_8hpp.html#ga3741664d4e94c499fc91ce34a031718a", null ],
     [ "utf16_to_utf8", "utf__utils_8hpp.html#gae1995dff9d8380a3b0399aacbd2a6a88", null ],
-    [ "utf32_to_utf8", "utf__utils_8hpp.html#gaa1d74df81c0aab9aa28711facebf9855", null ]
+    [ "utf32_to_utf8", "utf__utils_8hpp.html#gaa1d74df81c0aab9aa28711facebf9855", null ],
+    [ "high_surrogate_marker", "utf__utils_8hpp.html#ae05428a306ebabeafb6788953bb5e77f", null ],
+    [ "high_surrogate_start", "utf__utils_8hpp.html#a632a3d10c952d283a5fa3313dcf08297", null ],
+    [ "low_surrogate_start", "utf__utils_8hpp.html#a0cbf71dab4b90973703c857e52f13e89", null ]
 ];
