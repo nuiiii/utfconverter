@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['one_5fbyte_5fboundary_0',['one_byte_boundary',['../group__constants.html#ga9ed1754e0018de6c95a40501dce61eb1',1,'utf::constants']]]
+  ['non_5fstandard_5fencoding_0',['non_standard_encoding',['../namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0a82ded7b365261abc71391e997ec3c0cb',1,'utf::conversion']]]
 ];

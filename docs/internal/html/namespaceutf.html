@@ -110,16 +110,93 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae5a5c688314aef2a1805af198e80a96e"><td class="memItemLeft" align="right" valign="top"><a id="ae5a5c688314aef2a1805af198e80a96e" name="ae5a5c688314aef2a1805af198e80a96e"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_high_surrogate</b> (const char16_t ch)</td></tr>
+<tr class="memitem:ae5a5c688314aef2a1805af198e80a96e"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf.html#ae5a5c688314aef2a1805af198e80a96e">is_high_surrogate</a> (const char16_t ch)</td></tr>
+<tr class="memdesc:ae5a5c688314aef2a1805af198e80a96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if UTF-16 character can be first in double character pair.  <br /></td></tr>
 <tr class="separator:ae5a5c688314aef2a1805af198e80a96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39b5d4d739c2180b84e96ed614042f44"><td class="memItemLeft" align="right" valign="top"><a id="a39b5d4d739c2180b84e96ed614042f44" name="a39b5d4d739c2180b84e96ed614042f44"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_low_surrogate</b> (const char16_t ch)</td></tr>
+<tr class="memitem:a39b5d4d739c2180b84e96ed614042f44"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf.html#a39b5d4d739c2180b84e96ed614042f44">is_low_surrogate</a> (const char16_t ch)</td></tr>
+<tr class="memdesc:a39b5d4d739c2180b84e96ed614042f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if UTF-16 character can be second in double character pair.  <br /></td></tr>
 <tr class="separator:a39b5d4d739c2180b84e96ed614042f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the main namespace that contains everything related to utf-utils library. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae5a5c688314aef2a1805af198e80a96e" name="ae5a5c688314aef2a1805af198e80a96e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5a5c688314aef2a1805af198e80a96e">&#9670;&#160;</a></span>is_high_surrogate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool utf::is_high_surrogate </td>
+          <td>(</td>
+          <td class="paramtype">const char16_t&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if UTF-16 character can be first in double character pair. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>Character to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if character is the first in surrogate pair </dd>
+<dd>
+false if character is not the first in surrogate pair</dd></dl>
+<p>See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">About surrogates</a>. </p>
+
+</div>
+</div>
+<a id="a39b5d4d739c2180b84e96ed614042f44" name="a39b5d4d739c2180b84e96ed614042f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b5d4d739c2180b84e96ed614042f44">&#9670;&#160;</a></span>is_low_surrogate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool utf::is_low_surrogate </td>
+          <td>(</td>
+          <td class="paramtype">const char16_t&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if UTF-16 character can be second in double character pair. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>Character to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if character is the second in surrogate pair </dd>
+<dd>
+false if character is not the first in surrogate pair</dd></dl>
+<p>See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">About surrogates</a>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

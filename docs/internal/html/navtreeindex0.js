@@ -36,6 +36,8 @@ var NAVTREEINDEX0 =
 "namespacemembers_vars.html":[2,1,2],
 "namespaces.html":[2,0],
 "namespaceutf.html":[2,0,0],
+"namespaceutf.html#a39b5d4d739c2180b84e96ed614042f44":[2,0,0,3],
+"namespaceutf.html#ae5a5c688314aef2a1805af198e80a96e":[2,0,0,2],
 "namespaceutf_1_1constants.html":[2,0,0,0],
 "namespaceutf_1_1conversion.html":[2,0,0,1],
 "namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0":[2,0,0,1,0],
@@ -45,10 +47,12 @@ var NAVTREEINDEX0 =
 "pages.html":[],
 "utf-utils-docs_8hpp_source.html":[3,0,0,0,0],
 "utf__utils_8hpp.html":[3,0,0,0,1],
+"utf__utils_8hpp.html#a39b5d4d739c2180b84e96ed614042f44":[3,0,0,0,1,3],
 "utf__utils_8hpp.html#a9bfe457bfa9c6b4460bb83153055ffb0":[3,0,0,0,1,1],
 "utf__utils_8hpp.html#a9bfe457bfa9c6b4460bb83153055ffb0a260ca9dd8a4577fc00b7bd5810298076":[3,0,0,0,1,1,2],
 "utf__utils_8hpp.html#a9bfe457bfa9c6b4460bb83153055ffb0a6fa156f5a63046fe2af5de2e98ac61f3":[3,0,0,0,1,1,1],
 "utf__utils_8hpp.html#a9bfe457bfa9c6b4460bb83153055ffb0a82ded7b365261abc71391e997ec3c0cb":[3,0,0,0,1,1,0],
 "utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f":[3,0,0,0,1,0],
+"utf__utils_8hpp.html#ae5a5c688314aef2a1805af198e80a96e":[3,0,0,0,1,2],
 "utf__utils_8hpp_source.html":[3,0,0,0,1]
 };

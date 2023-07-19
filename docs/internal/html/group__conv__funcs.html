@@ -98,10 +98,10 @@ $(document).ready(function(){initNavTree('group__conv__funcs.html',''); initResi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gafacbcecd7479c214800aad38ac30954a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#gafacbcecd7479c214800aad38ac30954a">utf::conversion::utf8_to_utf16</a> (const std::basic_string_view&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_sv, std::basic_string&lt; char16_t &gt; &amp;utf16_s, bool comply_with_standard)</td></tr>
-<tr class="memdesc:gafacbcecd7479c214800aad38ac30954a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-6 string to UTF-16 string.  <br /></td></tr>
+<tr class="memdesc:gafacbcecd7479c214800aad38ac30954a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-8 string to UTF-16 string.  <br /></td></tr>
 <tr class="separator:gafacbcecd7479c214800aad38ac30954a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab805d4cefd7609c6f941398e7d257c98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#gab805d4cefd7609c6f941398e7d257c98">utf::conversion::utf8_to_utf32</a> (const std::basic_string_view&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_sv, std::basic_string&lt; char32_t &gt; &amp;utf32_s, bool comply_with_standard)</td></tr>
-<tr class="memdesc:gab805d4cefd7609c6f941398e7d257c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-6 string to UTF-32 string.  <br /></td></tr>
+<tr class="memdesc:gab805d4cefd7609c6f941398e7d257c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-8 string to UTF-32 string.  <br /></td></tr>
 <tr class="separator:gab805d4cefd7609c6f941398e7d257c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0">status_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__conv__funcs.html#gae1995dff9d8380a3b0399aacbd2a6a88">utf::conversion::utf16_to_utf8</a> (const std::basic_string_view&lt; char16_t &gt; &amp;utf16_sv, std::basic_string&lt; <a class="el" href="utf__utils_8hpp.html#ad62bf0e83d93363062bf3b6e2b22e09f">char8_t</a> &gt; &amp;utf8_s, bool comply_with_standard)</td></tr>
 <tr class="memdesc:gae1995dff9d8380a3b0399aacbd2a6a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function converts UTF-16 string to UTF-8 string.  <br /></td></tr>
@@ -160,7 +160,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>status specified by <a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0" title="Defines return values for conversion functions.">status_e</a> enum. Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow usage of characters with code point from <code>U+D800</code> to <code>U+DFFF</code>. Still, as noted by the aforementioned Wikipedia article you <em>can</em> convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it you also must be able to handle <a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0a82ded7b365261abc71391e997ec3c0cb">status_e::non_standard_encoding</a> return value separately. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>status specified by <a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0" title="Defines return values for conversion functions.">status_e</a> enum. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Judging by this <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF">Wikipedia article</a> the standard does not allow usage of characters with code point from <code>U+D800</code> to <code>U+DFFF</code>. Still, as noted by the aforementioned Wikipedia article you <em>can</em> convert "characters" in this range, though it is not recommended. By default the conversion is not strict. If you opt in to enable it you also must be able to handle <a class="el" href="namespaceutf_1_1conversion.html#a9bfe457bfa9c6b4460bb83153055ffb0a82ded7b365261abc71391e997ec3c0cb">status_e::non_standard_encoding</a> return value separately. </dd></dl>
 
 </div>
 </div>
@@ -334,7 +335,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function converts UTF-6 string to UTF-16 string. </p>
+<p>This function converts UTF-8 string to UTF-16 string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">utf8_sv</td><td>const reference to a string view representing UTF-8 string. </td></tr>
@@ -370,7 +371,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>comply_with_standard</em>&#160;</td>
+          <td class="paramname"><em>comply_with_standard</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -380,7 +381,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function converts UTF-6 string to UTF-32 string. </p>
+<p>This function converts UTF-8 string to UTF-32 string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">utf8_sv</td><td>const reference to a string view representing UTF-8 string. </td></tr>

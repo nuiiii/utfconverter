@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['low_5fsurrogate_5fmarker_0',['low_surrogate_marker',['../group__constants.html#gad82da38a455b2e2502e9a392968b82cb',1,'utf::constants']]],
-  ['low_5fsurrogate_5fstart_1',['low_surrogate_start',['../group__constants.html#ga0cbf71dab4b90973703c857e52f13e89',1,'utf::constants']]]
+  ['is_5fhigh_5fsurrogate_0',['is_high_surrogate',['../namespaceutf.html#ae5a5c688314aef2a1805af198e80a96e',1,'utf']]],
+  ['is_5flow_5fsurrogate_1',['is_low_surrogate',['../namespaceutf.html#a39b5d4d739c2180b84e96ed614042f44',1,'utf']]]
 ];

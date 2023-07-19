@@ -27,5 +27,7 @@ var namespaceutf =
       [ "utf32_to_utf8", "group__conv__funcs.html#gaa1d74df81c0aab9aa28711facebf9855", null ],
       [ "utf8_to_utf16", "group__conv__funcs.html#gafacbcecd7479c214800aad38ac30954a", null ],
       [ "utf8_to_utf32", "group__conv__funcs.html#gab805d4cefd7609c6f941398e7d257c98", null ]
-    ] ]
+    ] ],
+    [ "is_high_surrogate", "namespaceutf.html#ae5a5c688314aef2a1805af198e80a96e", null ],
+    [ "is_low_surrogate", "namespaceutf.html#a39b5d4d739c2180b84e96ed614042f44", null ]
 ];
