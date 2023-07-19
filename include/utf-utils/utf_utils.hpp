@@ -300,67 +300,6 @@ status_e utf::conversion::utf16_to_utf8(const std::basic_string_view<char16_t>& 
     return status_e::success;
 }
 
-status_e utf::conversion::utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
-    std::basic_string<char8_t> result;
-    
-    for (auto it = utf32_sv.begin(); it < utf32_sv.end(); it++) {
-        char32_t this_code_point = *it;
-        if (this_code_point > four_byte_boundary) {
-            return status_e::undefined_error;
-        }
-        if (this_code_point <= one_byte_boundary) {
-            result.push_back(this_code_point);
-            continue;
-        }
-        if (this_code_point <= two_byte_boundary) {
-            uint16_t cp_16        = static_cast<uint16_t>(this_code_point);
-
-            uint8_t  first_5_bits =  cp_16 >>  6;
-            uint8_t  last_6_bits  = (cp_16 << 10) >> 10;
-
-            result.push_back((double_byte_marker << 5) + first_5_bits);
-            result.push_back((trailing_byte_marker << 6) + last_6_bits);
-
-            continue;
-        }
-        if (this_code_point <= three_byte_boundary) {
-            uint16_t cp_16      = static_cast<uint16_t>(this_code_point);
-
-            bool wrong_encoding = comply_with_standard           &&
-                                  cp_16 < low_surrogate_start    &&
-                                  cp_16 > high_surrogate_start;
-            if (wrong_encoding) {
-                    return status_e::non_standard_encoding;
-            }
-
-            uint8_t  first_4_bits  =  cp_16 >> 12;
-            uint8_t  middle_6_bits = (cp_16 <<  4) >> 10;
-            uint8_t  last_6_bits   = (cp_16 << 10) >> 10;
-
-            result.push_back((triple_byte_marker   << 4) + first_4_bits);
-            result.push_back((trailing_byte_marker << 6) + middle_6_bits);
-            result.push_back((trailing_byte_marker << 6) + last_6_bits);
-
-            continue;
-        }
-        if (this_code_point <= four_byte_boundary) {
-            uint8_t first_3_bits  =  this_code_point >> 18;
-            uint8_t second_6_bits = (this_code_point << 14) >> 26;
-            uint8_t third_6_bits  = (this_code_point << 20) >> 26;
-            uint8_t last_6_bits   = (this_code_point << 26) >> 26;
-
-            result.push_back((quadruple_byte_marker << 5) + first_3_bits);
-            result.push_back((trailing_byte_marker  << 6) + second_6_bits);
-            result.push_back((trailing_byte_marker  << 6) + third_6_bits);
-            result.push_back((trailing_byte_marker  << 6) + last_6_bits);
-
-            continue;
-        }
-    }
-
-    return status_e::success;
-}
-
 status_e utf::conversion::utf16_to_utf32(const std::basic_string_view<char16_t>& utf16_sv, std::basic_string<char32_t>& utf32_s, bool comply_with_standard = false) {
     // vector of UTF-32 characters (code points)
     std::basic_string<char32_t> code_points;
@@ -424,6 +363,68 @@ status_e utf::conversion::utf16_to_utf32(const std::basic_string_view<char16_t>&
     utf32_s =  code_points;
     return status_e::success;
 }
+
+status_e utf::conversion::utf32_to_utf8(const std::basic_string_view<char32_t>& utf32_sv, std::basic_string<char8_t>& utf8_s, bool comply_with_standard = false) {
+    std::basic_string<char8_t> result;
+    
+    for (auto it = utf32_sv.begin(); it < utf32_sv.end(); it++) {
+        char32_t this_code_point = *it;
+        if (this_code_point > four_byte_boundary) {
+            return status_e::undefined_error;
+        }
+        if (this_code_point <= one_byte_boundary) {
+            result.push_back(this_code_point);
+            continue;
+        }
+        if (this_code_point <= two_byte_boundary) {
+            uint16_t cp_16        = static_cast<uint16_t>(this_code_point);
+
+            uint8_t  first_5_bits =  cp_16 >>  6;
+            uint8_t  last_6_bits  = (cp_16 << 10) >> 10;
+
+            result.push_back((double_byte_marker << 5) + first_5_bits);
+            result.push_back((trailing_byte_marker << 6) + last_6_bits);
+
+            continue;
+        }
+        if (this_code_point <= three_byte_boundary) {
+            uint16_t cp_16      = static_cast<uint16_t>(this_code_point);
+
+            bool wrong_encoding = comply_with_standard           &&
+                                  cp_16 < low_surrogate_start    &&
+                                  cp_16 > high_surrogate_start;
+            if (wrong_encoding) {
+                    return status_e::non_standard_encoding;
+            }
+
+            uint8_t  first_4_bits  =  cp_16 >> 12;
+            uint8_t  middle_6_bits = (cp_16 <<  4) >> 10;
+            uint8_t  last_6_bits   = (cp_16 << 10) >> 10;
+
+            result.push_back((triple_byte_marker   << 4) + first_4_bits);
+            result.push_back((trailing_byte_marker << 6) + middle_6_bits);
+            result.push_back((trailing_byte_marker << 6) + last_6_bits);
+
+            continue;
+        }
+        if (this_code_point <= four_byte_boundary) {
+            uint8_t first_3_bits  =  this_code_point >> 18;
+            uint8_t second_6_bits = (this_code_point << 14) >> 26;
+            uint8_t third_6_bits  = (this_code_point << 20) >> 26;
+            uint8_t last_6_bits   = (this_code_point << 26) >> 26;
+
+            result.push_back((quadruple_byte_marker << 5) + first_3_bits);
+            result.push_back((trailing_byte_marker  << 6) + second_6_bits);
+            result.push_back((trailing_byte_marker  << 6) + third_6_bits);
+            result.push_back((trailing_byte_marker  << 6) + last_6_bits);
+
+            continue;
+        }
+    }
+
+    return status_e::success;
+}
+
 
 #endif // defined IMPLEMENT_UTFUTILS
 #endif // !defined(UTFUTILS_H)
