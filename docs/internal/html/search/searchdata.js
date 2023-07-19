@@ -8,7 +8,7 @@ var indexSectionsWithContent =
   5: "c",
   6: "s",
   7: "nsu",
-  8: "c",
+  8: "cu",
   9: "u"
 };
 

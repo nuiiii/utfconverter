@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>utf-utils: utf Namespace Reference</title>
+<title>utf-utils: Utility</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('namespaceutf.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('group__utils.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -90,41 +90,104 @@ $(document).ready(function(){initNavTree('namespaceutf.html',''); initResizable(
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">utf Namespace Reference</div></div>
+  <div class="headertitle"><div class="title">Utility</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the main namespace that contains everything related to utf-utils library.  
-<a href="namespaceutf.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespaceutf_1_1constants"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf_1_1constants.html">constants</a></td></tr>
-<tr class="memdesc:namespaceutf_1_1constants"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace contains various constants. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceutf_1_1conversion"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutf_1_1conversion.html">conversion</a></td></tr>
-<tr class="memdesc:namespaceutf_1_1conversion"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace contains conversion functions. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae5a5c688314aef2a1805af198e80a96e"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utils.html#gae5a5c688314aef2a1805af198e80a96e">is_high_surrogate</a> (const char16_t ch)</td></tr>
+<tr class="memitem:gae5a5c688314aef2a1805af198e80a96e"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utils.html#gae5a5c688314aef2a1805af198e80a96e">utf::is_high_surrogate</a> (const char16_t ch)</td></tr>
 <tr class="memdesc:gae5a5c688314aef2a1805af198e80a96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if UTF-16 character can be first in double character pair.  <br /></td></tr>
 <tr class="separator:gae5a5c688314aef2a1805af198e80a96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39b5d4d739c2180b84e96ed614042f44"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utils.html#ga39b5d4d739c2180b84e96ed614042f44">is_low_surrogate</a> (const char16_t ch)</td></tr>
+<tr class="memitem:ga39b5d4d739c2180b84e96ed614042f44"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utils.html#ga39b5d4d739c2180b84e96ed614042f44">utf::is_low_surrogate</a> (const char16_t ch)</td></tr>
 <tr class="memdesc:ga39b5d4d739c2180b84e96ed614042f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if UTF-16 character can be second in double character pair.  <br /></td></tr>
 <tr class="separator:ga39b5d4d739c2180b84e96ed614042f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is the main namespace that contains everything related to utf-utils library. </p>
-</div></div><!-- contents -->
+<p>Utility. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gae5a5c688314aef2a1805af198e80a96e" name="gae5a5c688314aef2a1805af198e80a96e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae5a5c688314aef2a1805af198e80a96e">&#9670;&#160;</a></span>is_high_surrogate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool utf::is_high_surrogate </td>
+          <td>(</td>
+          <td class="paramtype">const char16_t&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if UTF-16 character can be first in double character pair. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>Character to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if character is the first in surrogate pair </dd>
+<dd>
+false if character is not the first in surrogate pair</dd></dl>
+<p>See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">About surrogates</a>. </p>
+
+</div>
+</div>
+<a id="ga39b5d4d739c2180b84e96ed614042f44" name="ga39b5d4d739c2180b84e96ed614042f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga39b5d4d739c2180b84e96ed614042f44">&#9670;&#160;</a></span>is_low_surrogate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool utf::is_low_surrogate </td>
+          <td>(</td>
+          <td class="paramtype">const char16_t&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if UTF-16 character can be second in double character pair. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>Character to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if character is the second in surrogate pair </dd>
+<dd>
+false if character is not the first in surrogate pair</dd></dl>
+<p>See <a href="https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF">About surrogates</a>. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceutf.html">utf</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>

@@ -268,6 +268,12 @@ namespace utf {
 
     /**
      * @internal
+     * @addtogroup utils Utility
+     * Utility.
+     * @{
+     */
+    /**
+     * @internal
      * @brief Checks if UTF-16 character can be first in double character pair
      * @param ch Character to check
      * @return true if character is the first in surrogate pair
@@ -290,7 +296,9 @@ namespace utf {
     constexpr bool is_low_surrogate(const char16_t ch) {
         return constants::low_surrogate_marker == ch >> 10;
     }
-
+    /**
+     * @}
+     */
 }
 
 using namespace utf;
